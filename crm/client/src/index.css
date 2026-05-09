@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #FAFAFA;
+    --bg-sidebar: #FFFFFF;
+    --bg-surface: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --border: #E5E7EB;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --text-muted: #9CA3AF;
+    --accent: #2563EB; /* modern primary blue, more SaaS friendly */
+    --accent-hover: #1D4ED8;
+    --accent-fade: rgba(37, 99, 235, 0.15);
+    
+    --hot-bg: #FEE2E2;
+    --hot-text: #DC2626;
+    --warm-bg: #FEF3C7;
+    --warm-text: #D97706;
+    --cold-bg: #DBEAFE;
+    --cold-text: #2563EB;
+
+    --status-bg: #F3F4F6;
+    --status-text: #374151;
+  }
+
+  .dark {
+    --bg-main: #0E1015; /* Linear style deep bg */
+    --bg-sidebar: #13151A;
+    --bg-surface: #181B21;
+    --bg-card: #1C1F26;
+    --border: #2A2E37;
+    --text-primary: #F3F4F6;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+    --accent: #5E6AD2; /* Linear purple/blue vibe */
+    --accent-hover: #6D7AE6;
+    --accent-fade: rgba(94, 106, 210, 0.15);
+
+    --hot-bg: rgba(220, 38, 38, 0.15);
+    --hot-text: #F87171;
+    --warm-bg: rgba(217, 119, 6, 0.15);
+    --warm-text: #FBBF24;
+    --cold-bg: rgba(37, 99, 235, 0.15);
+    --cold-text: #60A5FA;
+    
+    --status-bg: rgba(75, 85, 99, 0.2);
+    --status-text: #D1D5DB;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-main text-primary font-sans antialiased transition-colors duration-200;
+  }
+
+  /* Custom scrollbar matching saas apps */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full hover:bg-gray-400/50 dark:hover:bg-gray-600/50;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-white font-medium px-4 py-2 rounded-lg hover:bg-accent-hover transition-all duration-150 text-sm shadow-sm;
+  }
+  .btn-ghost {
+    @apply text-secondary hover:text-primary hover:bg-black/5 dark:hover:bg-white/5 px-3 py-2 rounded-lg transition-all duration-150 text-sm;
+  }
+  .card {
+    @apply bg-card border border-border rounded-xl shadow-sm transition-all duration-200;
+  }
+  .input {
+    @apply bg-surface border border-border rounded-lg px-3 py-2 text-sm text-primary placeholder-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-200 shadow-sm;
+  }
+  .badge-hot {
+    @apply bg-[var(--hot-bg)] text-[var(--hot-text)] text-xs font-semibold px-2.5 py-0.5 rounded-md;
+  }
+  .badge-warm {
+    @apply bg-[var(--warm-bg)] text-[var(--warm-text)] text-xs font-semibold px-2.5 py-0.5 rounded-md;
+  }
+  .badge-cold {
+    @apply bg-[var(--cold-bg)] text-[var(--cold-text)] text-xs font-semibold px-2.5 py-0.5 rounded-md;
+  }
+  .badge-status {
+    @apply bg-[var(--status-bg)] text-[var(--status-text)] text-xs font-medium px-2 py-0.5 rounded-md border border-border/50;
+  }
+}
